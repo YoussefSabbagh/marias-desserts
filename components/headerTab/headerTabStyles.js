@@ -2,13 +2,12 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   headerTabContainer: {
-    marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'center',
   },
   text: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '900',
   },
   wrapperCustom: {
     borderRadius: 50,

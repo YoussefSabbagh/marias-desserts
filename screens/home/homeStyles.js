@@ -4,10 +4,10 @@ export const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     marginTop: StatusBar.currentHeight,
+    backgroundColor: '#eee',
   },
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: 'white',
+    padding: 15,
   },
 });
