@@ -3,11 +3,16 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   searchContainer: {
     marginTop: 15,
+    padding: 10,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 100,
   },
+  input: { paddingLeft: 10 },
   leftIcon: {
-    marginLeft: 10,
+    marginHorizontal: 10,
   },
   rightIcon: {
     flexDirection: 'row',
