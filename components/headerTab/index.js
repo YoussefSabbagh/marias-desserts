@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { styles } from './headerTabStyles';
 
+import { useStore } from '../../hooks/contexts/Store';
+
 const HeaderTab = () => {
-  const [activeTab, setActiveTab] = useState('Delivery');
+  const { activeTab, setActiveTab } = useStore();
   return (
     <View style={styles.headerTabContainer}>
       <HeaderButton

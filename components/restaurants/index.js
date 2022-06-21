@@ -10,14 +10,23 @@ import {
 import { FontAwesome } from '@expo/vector-icons';
 import { styles } from './styles';
 
+import { useStore } from '../../hooks/contexts/Store';
 import useRestaurant from '../../hooks/useRestaurant';
 
-export const Restaurant = ({ searchParams }) => {
+export const Restaurant = () => {
+  const { location, activeCategory, activeTab } = useStore();
   const [{ data, error, loading }, searchRestaurant] = useRestaurant();
+
+  const searchParams = {
+    term: activeCategory,
+    location,
+    activeTab,
+    limit: 10,
+  };
 
   useEffect(() => {
     searchRestaurant(searchParams);
-  }, [searchParams]);
+  }, [location, activeCategory, activeTab]);
 
   if (loading) {
     return (
@@ -59,13 +68,25 @@ const RestaurantInfo = ({ restaurant }) => {
       <Text style={styles.restauranName}> {restaurant.name}</Text>
       <View style={styles.restaurantInfo}>
         <View>
-          <View style={styles.delivery}>
+          {/* <View style={styles.delivery}>
             <Text style={styles.label}> Phone: </Text>
             <Text style={styles.data}> {restaurant.phone}</Text>
-          </View>
+          </View> */}
           <View style={styles.delivery}>
             <Text style={styles.label}> Price: </Text>
             <Text style={styles.data}>{restaurant.price}</Text>
+          </View>
+          {/* <View style={styles.delivery}>
+            <Text style={styles.label}> Address: </Text>
+            <Text style={styles.data}>{restaurant.location.city}</Text>
+          </View> */}
+          <View style={styles.delivery}>
+            <Text style={styles.label}> Services: </Text>
+            <Text style={styles.data}>
+              {restaurant.transactions.map((transaction) => {
+                return <Text key={transaction}> {transaction} </Text>;
+              })}
+            </Text>
           </View>
         </View>
         <View

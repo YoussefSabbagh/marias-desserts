@@ -19,8 +19,11 @@ export default () => {
       const response = await yelp.get(
         `search?location=${searchParams.location}&term=${searchParams.term}&limit=${searchParams.limit}`
       );
+
       setResult({
-        data: response.data.businesses,
+        data: response.data.businesses.filter((business) =>
+          business.transactions.includes(searchParams.activeTab.toLowerCase())
+        ),
         error: null,
         loading: false,
       });

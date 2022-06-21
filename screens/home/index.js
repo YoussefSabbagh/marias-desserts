@@ -8,27 +8,20 @@ import { SearchBar } from '../../components/searchBar'; // busca por localidad
 import Categories from '../../components/categories';
 import { Restaurant } from '../../components/restaurants';
 
-import { localRestaurants } from '../../assets/data/restaurantData';
+import { useStore } from '../../hooks/contexts/Store';
 
 const Home = () => {
-  const [activeCategory, setActiveCategory] = useState('Pasta');
-  const [location, setLocation] = useState('Austin,TX');
-
-  const searchParams = {
-    term: activeCategory,
-    location,
-    limit: 5,
-  };
+  const { activeCategory, location } = useStore();
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <HeaderTab />
         {/* <Search setActiveCategory={setActiveCategory} /> */}
-        <SearchBar setLocation={setLocation} />
+        <SearchBar />
       </View>
       <Categories />
-      <Restaurant searchParams={searchParams} />
+      <Restaurant />
     </SafeAreaView>
   );
 };

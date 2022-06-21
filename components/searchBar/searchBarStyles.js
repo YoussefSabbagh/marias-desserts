@@ -10,7 +10,11 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 100,
   },
-  input: { paddingLeft: 10 },
+  input: {
+    flex: 1,
+    height: 40,
+    paddingLeft: 10,
+  },
   leftIcon: {
     marginHorizontal: 10,
   },

@@ -4,9 +4,11 @@ import { FontAwesome } from '@expo/vector-icons';
 import { styles } from './searchBarStyles';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
-export const SearchBar = ({ setLocation }) => {
-  const [activeTab, setActiveTab] = useState('Delivery');
-  const [locationInput, setLocationInput] = useState('');
+import { useStore } from '../../hooks/contexts/Store';
+
+export const SearchBar = () => {
+  const { location, setLocation } = useStore();
+  const [locationInput, setLocationInput] = useState(location);
 
   const handleLocation = () => {
     /**
